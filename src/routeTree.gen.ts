@@ -12,9 +12,13 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BeveragesRouteImport } from './routes/beverages'
 import { Route as CakesRouteImport } from './routes/cakes'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as MenuRouteImport } from './routes/menu'
+import { Route as OrderOnlineRouteImport } from './routes/order-online'
 import { Route as OurStoryRouteImport } from './routes/our-story'
 import { Route as PastriesRouteImport } from './routes/pastries'
+import { Route as SpecialsRouteImport } from './routes/specials'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -31,9 +35,24 @@ const CakesRoute = CakesRouteImport.update({
   path: '/cakes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MenuRoute = MenuRouteImport.update({
   id: '/menu',
   path: '/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderOnlineRoute = OrderOnlineRouteImport.update({
+  id: '/order-online',
+  path: '/order-online',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OurStoryRoute = OurStoryRouteImport.update({
@@ -46,55 +65,99 @@ const PastriesRoute = PastriesRouteImport.update({
   path: '/pastries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SpecialsRoute = SpecialsRouteImport.update({
+  id: '/specials',
+  path: '/specials',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/beverages': typeof BeveragesRoute
   '/cakes': typeof CakesRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/menu': typeof MenuRoute
+  '/order-online': typeof OrderOnlineRoute
   '/our-story': typeof OurStoryRoute
   '/pastries': typeof PastriesRoute
+  '/specials': typeof SpecialsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/beverages': typeof BeveragesRoute
   '/cakes': typeof CakesRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/menu': typeof MenuRoute
+  '/order-online': typeof OrderOnlineRoute
   '/our-story': typeof OurStoryRoute
   '/pastries': typeof PastriesRoute
+  '/specials': typeof SpecialsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/beverages': typeof BeveragesRoute
   '/cakes': typeof CakesRoute
+  '/contact': typeof ContactRoute
+  '/gallery': typeof GalleryRoute
   '/menu': typeof MenuRoute
+  '/order-online': typeof OrderOnlineRoute
   '/our-story': typeof OurStoryRoute
   '/pastries': typeof PastriesRoute
+  '/specials': typeof SpecialsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/beverages' | '/cakes' | '/menu' | '/our-story' | '/pastries'
+    | '/'
+    | '/beverages'
+    | '/cakes'
+    | '/contact'
+    | '/gallery'
+    | '/menu'
+    | '/order-online'
+    | '/our-story'
+    | '/pastries'
+    | '/specials'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/beverages' | '/cakes' | '/menu' | '/our-story' | '/pastries'
+  to:
+    | '/'
+    | '/beverages'
+    | '/cakes'
+    | '/contact'
+    | '/gallery'
+    | '/menu'
+    | '/order-online'
+    | '/our-story'
+    | '/pastries'
+    | '/specials'
   id:
     | '__root__'
     | '/'
     | '/beverages'
     | '/cakes'
+    | '/contact'
+    | '/gallery'
     | '/menu'
+    | '/order-online'
     | '/our-story'
     | '/pastries'
+    | '/specials'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BeveragesRoute: typeof BeveragesRoute
   CakesRoute: typeof CakesRoute
+  ContactRoute: typeof ContactRoute
+  GalleryRoute: typeof GalleryRoute
   MenuRoute: typeof MenuRoute
+  OrderOnlineRoute: typeof OrderOnlineRoute
   OurStoryRoute: typeof OurStoryRoute
   PastriesRoute: typeof PastriesRoute
+  SpecialsRoute: typeof SpecialsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -120,11 +183,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CakesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/menu': {
       id: '/menu'
       path: '/menu'
       fullPath: '/menu'
       preLoaderRoute: typeof MenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order-online': {
+      id: '/order-online'
+      path: '/order-online'
+      fullPath: '/order-online'
+      preLoaderRoute: typeof OrderOnlineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/our-story': {
@@ -141,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PastriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/specials': {
+      id: '/specials'
+      path: '/specials'
+      fullPath: '/specials'
+      preLoaderRoute: typeof SpecialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -148,9 +239,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BeveragesRoute: BeveragesRoute,
   CakesRoute: CakesRoute,
+  ContactRoute: ContactRoute,
+  GalleryRoute: GalleryRoute,
   MenuRoute: MenuRoute,
+  OrderOnlineRoute: OrderOnlineRoute,
   OurStoryRoute: OurStoryRoute,
   PastriesRoute: PastriesRoute,
+  SpecialsRoute: SpecialsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
